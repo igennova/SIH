@@ -1,14 +1,18 @@
 import React from 'react'
-import LearnSign from '../../../secondfeature/pages/LearnSign'
+import Convert from '../../../secondfeature/pages/LearnSign'
+import { Link } from 'react-router-dom'
 
 function Home() {
   return (
     <>
-    <LearnSign/>
+
    
-    <div>Home</div>
+    <div>Features</div>
+    <li>
+    <Link to="/model">Use the translator</Link></li>
+   <li> <Link to="/convertor">Use the Convertor</Link>
+    </li>
     </>
   )
 }
-
 export default Home

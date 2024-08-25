@@ -1,4 +1,4 @@
-import './Learnsign.css'
+import '../App.css';
 import React, { useState, useEffect, useRef } from "react";
 import Slider from 'react-input-slider';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -15,11 +15,13 @@ import { defaultPose } from '../Animations/defaultPose';
 
 import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+// Import translation library
+import { Translate } from '@google-cloud/translate';
 
 function Convert() {
   const [text, setText] = useState("");
+  const [translatedText, setTranslatedText] = useState("");
   const [bot, setBot] = useState(ybot);
   const [speed, setSpeed] = useState(0.1);
   const [pause, setPause] = useState(800);
@@ -48,7 +50,7 @@ function Convert() {
     ref.scene.background = new THREE.Color(0xdddddd);
 
     const spotLight = new THREE.SpotLight(0xffffff, 100);
-    spotLight.position.set(0, 3, 3);
+    spotLight.position.set(0, 5, 5);
     ref.scene.add(spotLight);
     ref.renderer = new THREE.WebGLRenderer({ antialias: true });
 
@@ -153,6 +155,27 @@ function Convert() {
     }
   }
 
+  const translateText = async (inputText, targetLanguage) => {
+    const translate = new Translate({ key: 'YOUR_API_KEY' });
+
+    const [translation] = await translate.translate(inputText, targetLanguage);
+    return translation;
+  }
+
+  const handleTranslateToGujarati = async () => {
+    const inputText = textFromInput.current.value;
+    const gujaratiText = await translateText(inputText, 'gu');
+    setTranslatedText(gujaratiText);
+    sign({ current: { value: gujaratiText } });
+  }
+
+  const handleTranslateToEnglish = async () => {
+    const inputText = textFromAudio.current.value;
+    const englishText = await translateText(inputText, 'en');
+    setTranslatedText(englishText);
+    sign({ current: { value: englishText } });
+  }
+
   const startListening = () =>{
     SpeechRecognition.startListening({continuous: true});
   }
@@ -170,6 +193,10 @@ function Convert() {
           </label>
           <textarea rows={3} value={text} className='w-100 input-style' readOnly />
           <label className='label-style'>
+            Translated Text
+          </label>
+          <textarea rows={3} value={translatedText} className='w-100 input-style' readOnly />
+          <label className='label-style'>
             Speech Recognition: {listening ? 'on' : 'off'}
           </label>
           <div className='space-between'>
@@ -184,15 +211,15 @@ function Convert() {
             </button>
           </div>
           <textarea rows={3} ref={textFromAudio} value={transcript} placeholder='Speech input ...' className='w-100 input-style' />
-          <button onClick={() => {sign(textFromAudio)}} className='btn btn-primary w-100 btn-style btn-start'>
-            Start Animations
+          <button onClick={handleTranslateToEnglish} className='btn btn-primary w-100 btn-style btn-start'>
+            Translate to English & Start Animations
           </button>
           <label className='label-style'>
             Text Input
           </label>
           <textarea rows={3} ref={textFromInput} placeholder='Text input ...' className='w-100 input-style' />
-          <button onClick={() => {sign(textFromInput)}} className='btn btn-primary w-100 btn-style btn-start'>
-            Start Animations
+          <button onClick={handleTranslateToGujarati} className='btn btn-primary w-100 btn-style btn-start'>
+            Translate to Gujarati & Start Animations
           </button>
         </div>
         <div className='col-md-7'>
@@ -204,34 +231,20 @@ function Convert() {
           </p>
           <img src={xbotPic} className='bot-image col-md-11' onClick={()=>{setBot(xbot)}} alt='Avatar 1: XBOT'/>
           <img src={ybotPic} className='bot-image col-md-11' onClick={()=>{setBot(ybot)}} alt='Avatar 2: YBOT'/>
-          <p className='label-style'>
-            Animation Speed: {Math.round(speed*100)/100}
-          </p>
-          <Slider
-            axis="x"
-            xmin={0.05}
-            xmax={0.50}
-            xstep={0.01}
-            x={speed}
-            onChange={({ x }) => setSpeed(x)}
-            className='w-100'
-          />
-          <p className='label-style'>
-            Pause time: {pause} ms
-          </p>
-          <Slider
-            axis="x"
-            xmin={0}
-            xmax={2000}
-            xstep={100}
-            x={pause}
-            onChange={({ x }) => setPause(x)}
-            className='w-100'
-          />
+          <div className='bot-options'>
+            <label className='label-style'>
+              Speed
+            </label>
+            <Slider axis='x' x={speed} xmin={0.1} xmax={1.0} xstep={0.05} onChange={({x}) => setSpeed(x)} className='slider-style'/>
+            <label className='label-style'>
+              Pause Duration
+            </label>
+            <Slider axis='x' x={pause} xmin={200} xmax={1000} xstep={100} onChange={({x}) => setPause(x)} className='slider-style'/>
+          </div>
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Convert;

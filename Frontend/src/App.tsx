@@ -5,6 +5,7 @@ import { BrowserRouter ,Route, Routes} from "react-router-dom";
 import Login from "./components/pages/Login/Login";
 import Register from "./components/pages/register";
 import Home from "./components/pages/Home/Home";
+import Convert from "./secondfeature/pages/LearnSign";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
      
         <Route path="/" element={<Home/>}></Route>
+        <Route path="/convertor" element={<Convert/>}></Route>
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/model" element={<Translator />}></Route>
         <Route path="/register" element={<Register />} />

@@ -7,8 +7,10 @@ const app = express();
 // require("dotenv").config();
 
 app.use(cors());
+app.use(express.json());
 
 
+app.use(express.urlencoded({ extended: true }));
 // Routes
 
 mongoose.connect("mongodb+srv://y0utuberlucky001:sihwinner2024@cluster0.0utzf.mongodb.net/", {})
