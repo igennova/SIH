@@ -4,7 +4,7 @@ import Modal from "./components/Modal";
 import { BrowserRouter ,Route, Routes} from "react-router-dom";
 import Login from "./components/pages/Login/Login";
 import Register from "./components/pages/register";
-import Home from "./components/pages/Home/Home";
+import Home from "../src/components/pages/Home/Home";
 
 function App() {
   return (
@@ -15,6 +15,7 @@ function App() {
         <Route path="/" element={<Home/>}></Route>
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/model" element={<Translator />}></Route>
+        <Route path="/test" element={<Translator />}></Route>
         <Route path="/register" element={<Register />} />
         </Routes>
       </BrowserRouter>
