@@ -1,6 +1,7 @@
 import { motion, useAnimation } from "framer-motion";
 import React from "react";
 import { FaArrowUpLong } from "react-icons/fa6";
+import { Link } from "react-router-dom";
 
 function Featured() {
   const cards = [useAnimation(), useAnimation()];
@@ -81,10 +82,10 @@ function Featured() {
           </div>
         </motion.a>
       </div>
-      <div className="m-auto rounded-full flex gap-2 justify-center w-fit bg-[#004D43] font-NueueMontreal text-zinc-100 px-10 py-3 text-sm tracking-wider uppercase">
+      <Link to="/data" className="m-auto rounded-full flex gap-2 justify-center w-fit bg-[#004D43] font-NueueMontreal text-zinc-100 px-10 py-3 text-sm tracking-wider uppercase">
         Learn Sign Language
         <FaArrowUpLong className="rotate-45 origin-center translate-y-[2px]" />
-      </div>
+      </Link>
     </div>
   );
 }

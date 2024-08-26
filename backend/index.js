@@ -3,6 +3,8 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const authRoutes = require("./routes/useRoutes");
+const dataRoutes = require('./routes/dataRoutes');
+const folderroutes=require("./routes/folderRoutes");
 const app = express();
 // require("dotenv").config();
 
@@ -25,3 +27,5 @@ mongoose.connect("mongodb+srv://y0utuberlucky001:sihwinner2024@cluster0.0utzf.mo
   });
   
   app.use("/api/auth", authRoutes);
+  app.use("/api/auth", dataRoutes);//api/auth/data
+  app.use('/api/auth', folderroutes);

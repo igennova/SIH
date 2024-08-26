@@ -6,6 +6,7 @@ import Login from "./components/pages/Login/Login";
 import Register from "./components/pages/register";
 import Convert from "./secondfeature/pages/LearnSign";
 import Home from "../src/components/pages/Home/Home";
+import Video from "./components/data/data";
 
 function App() {
   return (
@@ -14,11 +15,12 @@ function App() {
       <Routes>
      
         <Route path="/" element={<Home/>}></Route>
-        <Route path="/convertor" element={<Convert/>}></Route>
+        <Route path="/test" element={<Convert/>}></Route>
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/model" element={<Translator />}></Route>
-        <Route path="/test" element={<Translator />}></Route>
         <Route path="/register" element={<Register />} />
+        <Route path="/data" element={<Video/>}></Route>
+        <Route path="/folder/:folderId" element={<Video/>}></Route>
         </Routes>
       </BrowserRouter>
     </React.StrictMode>

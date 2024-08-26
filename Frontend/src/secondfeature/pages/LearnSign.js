@@ -168,7 +168,7 @@ function Convert() {
           <label className='label-style'>
             Processed Text
           </label>
-          <textarea rows={3} value={text} className='w-100 input-style' readOnly />
+          <textarea rows={3} value={text} className='w-100 input-style' readOnly style={{ color: 'white' }} />
           <label className='label-style'>
             Speech Recognition: {listening ? 'on' : 'off'}
           </label>
@@ -183,14 +183,14 @@ function Convert() {
               Clear
             </button>
           </div>
-          <textarea rows={3} ref={textFromAudio} value={transcript} placeholder='Speech input ...' className='w-100 input-style' />
+          <textarea rows={3} ref={textFromAudio} value={transcript} placeholder='Speech input ...' className='w-100 input-style' style={{ color: 'white' }} />
           <button onClick={() => {sign(textFromAudio)}} className='btn btn-primary w-100 btn-style btn-start'>
             Start Animations
           </button>
           <label className='label-style'>
             Text Input
           </label>
-          <textarea rows={3} ref={textFromInput} placeholder='Text input ...' className='w-100 input-style' />
+          <textarea rows={3} ref={textFromInput} placeholder='Text input ...' className='w-100 input-style' style={{ color: 'white' }} />
           <button onClick={() => {sign(textFromInput)}} className='btn btn-primary w-100 btn-style btn-start'>
             Start Animations
           </button>
