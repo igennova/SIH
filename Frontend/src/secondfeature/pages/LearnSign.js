@@ -17,9 +17,11 @@ import * as THREE from "three";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
 
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import axios from 'axios';
 
 function Convert() {
   const [text, setText] = useState("");
+  const [gujaratiText, setGujaratiText] = useState("");
   const [bot, setBot] = useState(ybot);
   const [speed, setSpeed] = useState(0.1);
   const [pause, setPause] = useState(800);
@@ -85,6 +87,28 @@ function Convert() {
     );
 
   }, [ref, bot]);
+
+  useEffect(() => {
+    if (transcript) {
+      translateText(transcript);
+    }
+  }, [transcript]);
+
+  const translateText = async (text) => {
+    try {
+      const response = await axios.post(
+        `https://translation.googleapis.com/language/translate/v2?key=AIzaSyCf0Xy0OnhxlduyEt3K8zP-sOuu-l_u6uA`,
+        {
+          q: text,
+          target: 'gu',
+          format: 'text'
+        }
+      );
+      setGujaratiText(response.data.data.translations[0].translatedText);
+    } catch (error) {
+      console.error('Error translating text:', error);
+    }
+  };
 
   ref.animate = () => {
     if(ref.animations.length === 0){
@@ -170,6 +194,10 @@ function Convert() {
           </label>
           <textarea rows={3} value={text} className='w-100 input-style' readOnly style={{ color: 'white' }} />
           <label className='label-style'>
+            Gujarati Translation
+          </label>
+          <textarea rows={3} value={gujaratiText} className='w-100 input-style' readOnly style={{ color: 'white' }} />
+          <label className='label-style'>
             Speech Recognition: {listening ? 'on' : 'off'}
           </label>
           <div className='space-between'>
@@ -213,11 +241,10 @@ function Convert() {
             xmax={0.50}
             xstep={0.01}
             x={speed}
-            onChange={({ x }) => setSpeed(x)}
-            className='w-100'
+            onChange={({x}) => setSpeed(x)}
           />
           <p className='label-style'>
-            Pause time: {pause} ms
+            Pause Time (ms): {pause}
           </p>
           <Slider
             axis="x"
@@ -225,13 +252,12 @@ function Convert() {
             xmax={2000}
             xstep={100}
             x={pause}
-            onChange={({ x }) => setPause(x)}
-            className='w-100'
+            onChange={({x}) => setPause(x)}
           />
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default Convert;
