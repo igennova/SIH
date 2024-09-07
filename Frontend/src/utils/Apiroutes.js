@@ -3,3 +3,4 @@ export const loginRoute =`${host}/api/auth/login`;
 export const registerRoute =`${host}/api/auth/register`;
 export const dataRoute =`${host}/api/auth/data`;
 export const eventroute=`${host}/api/auth/events`;
+export const videoroute =`${host}/api/auth/videos`;

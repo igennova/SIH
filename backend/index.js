@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const authRoutes = require("./routes/useRoutes");
 const dataRoutes = require('./routes/dataRoutes');
 const eventroutes=require("./routes/eventRoutes");
+const videoroutes=require("./routes/videoRoutes")
 // const folderroutes=require("./routes/folderRoutes");
 const app = express();
 // require("dotenv").config();
@@ -29,5 +30,6 @@ mongoose.connect("mongodb://localhost:27017", {})
   
   app.use("/api/auth", authRoutes);
   app.use("/api/auth", eventroutes);
+  app.use("/api/auth", videoroutes)
   // app.use("/api/auth", dataRoutes);//api/auth/data
   // app.use('/api/auth', folderroutes);

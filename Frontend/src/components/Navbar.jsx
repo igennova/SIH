@@ -22,6 +22,7 @@ function Navbar() {
             </a>
           ))}
           <Link to="/events">Events</Link>
+          <Link to="/video">Videototext</Link>
         </div>
         <LuMenu className="md:hidden block text-3xl" />
       </div>
