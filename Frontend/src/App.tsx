@@ -7,7 +7,8 @@ import Register from "./components/pages/register";
 import Convert from "./secondfeature/pages/LearnSign";
 import Home from "../src/components/pages/Home/Home";
 import Video from "./components/data/data";
-
+import Event from "./components/data/Event";
+// import MathGame from "./components/game";
 function App() {
   return (
     <React.StrictMode>
@@ -21,6 +22,8 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/data" element={<Video/>}></Route>
         <Route path="/folder/:folderId" element={<Video/>}></Route>
+        <Route path="/events" element={<Event/>}></Route>
+        {/* <Route path="/game" element={<MathGame/>}></Route> */}
         </Routes>
       </BrowserRouter>
     </React.StrictMode>

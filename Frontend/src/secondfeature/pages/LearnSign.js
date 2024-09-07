@@ -97,7 +97,7 @@ function Convert() {
   const translateText = async (text) => {
     try {
       const response = await axios.post(
-        `https://translation.googleapis.com/language/translate/v2?key=AIzaSyCf0Xy0OnhxlduyEt3K8zP-sOuu-l_u6uA`,
+        `https://translation.googleapis.com/language/translate/v2?key=AIzaSyCf0Xy0OnhxlduyEt3K8zP-sOuu-l_u6uA `,
         {
           q: text,
           target: 'gu',
@@ -186,7 +186,7 @@ function Convert() {
   }
 
   return (
-    <div className='container-fluid'>
+    <div className='container-fluid'> 
       <div className='row'>
         <div className='col-md-3'>
           <label className='label-style'>
@@ -196,7 +196,7 @@ function Convert() {
           <label className='label-style'>
             Gujarati Translation
           </label>
-          <textarea rows={3} value={gujaratiText} className='w-100 input-style' readOnly style={{ color: 'white' }} />
+          {/* <textarea rows={3} value={gujaratiText} className='w-100 input-style' readOnly style={{ color: 'white' }} /> */}
           <label className='label-style'>
             Speech Recognition: {listening ? 'on' : 'off'}
           </label>

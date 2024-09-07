@@ -43,6 +43,7 @@ export const DELETE: string = "⌫";
 export const SPACE: string = "SPACE";
 
 export const MODEL_URL =
+// "https://alphabetmodel.s3.amazonaws.com/model.json"
 // "https://finalbucket121.s3.amazonaws.com/model.json"
 // "https://hello245.s3.amazonaws.com/model.json" failed without bin 
   "https://asl-model.s3.us-east-2.amazonaws.com/model1/model.json";

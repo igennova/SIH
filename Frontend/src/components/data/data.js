@@ -39,7 +39,9 @@ function Video() {
       { name: "W", id: "1JMWkAryDQ074isVeD0_umJfFHOhb3f6t" },
       { name: "X", id: "1t4mOWrTel2OXS76RX7b9X2Gf-6MqmrFp" },
       { name: "Y", id: "1wiWGUBD_R_KobXRAE3Erpp7XUZrUuYNb" },
-      { name: "Z", id: "1cTyPjYRqrBTG2cEHQNXd4oRGkp9HtY4M" }
+      { name: "Z", id: "1cTyPjYRqrBTG2cEHQNXd4oRGkp9HtY4M" },
+      {name:"EVS",id:"1A1T72ZbXaNJAKBZmwJtU0nQpIZAIYdeC"}
+      // ... other folders
     ];
     
     setFolders(folderData);
@@ -72,7 +74,6 @@ function Video() {
   }, [folderId]);
 
   const handleFolderClick = (folderId) => {
-    // Navigate to the folder route
     navigate(`/folder/${folderId}`);
   };
 
@@ -85,26 +86,18 @@ function Video() {
   };
 
   return (
-    <div>
+    <div className="bg-gray-900 text-white min-h-screen p-6">
       {!folderId && (
         <>
-          <h1>Google Drive Folders</h1>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+          <h1 className="text-20xl text-center font-bold mb-6">ISL DICTIONARY</h1>
+          <div className="flex flex-wrap gap-10">
             {folders.map(folder => (
               <div
                 key={folder.id}
                 onClick={() => handleFolderClick(folder.id)}
-                style={{
-                  border: '2px solid #ccc',
-                  borderRadius: '8px',
-                  padding: '10px',
-                  cursor: 'pointer',
-                  width: '200px',
-                  textAlign: 'center',
-                }}
+                className="bg-gray-800 border border-gray-700 rounded-lg p-4 cursor-pointer hover:bg-gray-700 transition w-64 h-40 flex flex-col justify-center items-center"
               >
-                <h4>{folder.name}</h4>
-                <p>Click to Open</p>
+                <h4 className="text-3xl font-semibold text-center break-words">{folder.name}</h4>
               </div>
             ))}
           </div>
@@ -112,24 +105,17 @@ function Video() {
       )}
 
       {folderId && videos.length > 0 && (
-        <div>
-          <h2>Videos in Folder</h2>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
+        <div className="mt-8">
+          <h2 className="text-2xl font-bold mb-4">Videos in Folder</h2>
+          <div className="flex flex-wrap gap-10">
             {videos.map(video => (
               <div
                 key={video.id}
                 onClick={() => handleVideoClick(video)}
-                style={{
-                  border: '2px solid #ccc',
-                  borderRadius: '8px',
-                  padding: '10px',
-                  cursor: 'pointer',
-                  width: '200px',
-                  textAlign: 'center',
-                }}
+                className="bg-gray-800 border border-gray-700 rounded-lg p-4 cursor-pointer hover:bg-gray-700 transition w-64 h-40 flex flex-col justify-center items-center"
               >
-                <h5>{video.name.slice(0, -4)}</h5>
-                <p>Click to Play</p>
+                <h5 className="text-lg font-semibold text-center break-words">{video.name.slice(0, -4)}</h5>
+                <p className="mt-2">Click to Play</p>
               </div>
             ))}
           </div>
@@ -137,10 +123,12 @@ function Video() {
       )}
 
       {selectedVideo && (
-        <div style={modalStyles.overlay}>
-          <div style={modalStyles.modal}>
-            <button onClick={handleCloseModal} style={modalStyles.closeButton}>X</button>
-            <h2>Now Playing: {selectedVideo.name}</h2>
+        <div className="fixed inset-0 bg-gray-800 bg-opacity-75 flex items-center justify-center z-50">
+          <div className="bg-gray-900 p-6 rounded-lg relative">
+            <button onClick={handleCloseModal} className="absolute top-2 right-2 bg-red-600 text-white rounded-full w-8 h-8 flex items-center justify-center text-lg">
+              X
+            </button>
+            <h2 className="text-xl font-bold mb-4">Now Playing: {selectedVideo.name}</h2>
             <iframe
               width="640"
               height="480"
@@ -156,41 +144,5 @@ function Video() {
     </div>
   );
 }
-
-const modalStyles = {
-  overlay: {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.7)',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    zIndex: 1000,
-  },
-  modal: {
-    backgroundColor: '#fff',
-    padding: '20px',
-    borderRadius: '8px',
-    position: 'relative',
-    textAlign: 'center',
-  },
-  closeButton: {
-    position: 'absolute',
-    top: '10px',
-    right: '10px',
-    backgroundColor: '#f44336',
-    color: '#fff',
-    border: 'none',
-    borderRadius: '50%',
-    width: '30px',
-    height: '30px',
-    cursor: 'pointer',
-    fontSize: '16px',
-    lineHeight: '30px',
-  },
-};
 
 export default Video;

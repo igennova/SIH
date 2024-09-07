@@ -4,7 +4,8 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const authRoutes = require("./routes/useRoutes");
 const dataRoutes = require('./routes/dataRoutes');
-const folderroutes=require("./routes/folderRoutes");
+const eventroutes=require("./routes/eventRoutes");
+// const folderroutes=require("./routes/folderRoutes");
 const app = express();
 // require("dotenv").config();
 
@@ -15,7 +16,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 // Routes
 
-mongoose.connect("mongodb+srv://y0utuberlucky001:sihwinner2024@cluster0.0utzf.mongodb.net/", {})
+mongoose.connect("mongodb://localhost:27017", {})
   .then(() => {
     console.log("DB CONNECTED");
   })
@@ -27,5 +28,6 @@ mongoose.connect("mongodb+srv://y0utuberlucky001:sihwinner2024@cluster0.0utzf.mo
   });
   
   app.use("/api/auth", authRoutes);
-  app.use("/api/auth", dataRoutes);//api/auth/data
-  app.use('/api/auth', folderroutes);
+  app.use("/api/auth", eventroutes);
+  // app.use("/api/auth", dataRoutes);//api/auth/data
+  // app.use('/api/auth', folderroutes);

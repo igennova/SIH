@@ -1,5 +1,6 @@
 import React from "react";
 import { LuMenu } from "react-icons/lu";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const navLinks = ["Features", "Learning" , "Our Mission", "About Us", "Contact"];
@@ -20,6 +21,7 @@ function Navbar() {
               {item}
             </a>
           ))}
+          <Link to="/events">Events</Link>
         </div>
         <LuMenu className="md:hidden block text-3xl" />
       </div>

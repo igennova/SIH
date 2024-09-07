@@ -10,13 +10,13 @@ import LocomotiveScroll from "locomotive-scroll";
 import "../../../../src/index.css"
 
 function Home() {
-  // Locomotive Scroll
-  const locomotiveScroll = new LocomotiveScroll({
-    lenisOptions: {
-      smoothTouch: true,
-      touchMultiplier: 1,
-    },
-  });
+  // // Locomotive Scroll
+  // // const locomotiveScroll = new LocomotiveScroll({
+  // //   lenisOptions: {
+  // //     smoothTouch: true,
+  // //     touchMultiplier: 1,
+  // //   },
+  // });
 
   return (
     <div className="w-full min-h-screen bg-zinc-900 text-white">
