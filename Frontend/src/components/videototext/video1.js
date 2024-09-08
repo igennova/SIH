@@ -41,22 +41,34 @@ function VideotoText() {
   };
 
   return (
-    <div className="App">
-      <h1>Video Transcription</h1>
+    <div className="min-h-screen flex bg-zinc-900 text-white">
+      <div className="p-8 rounded-lg w-full">
+        <h1 className="text-2xl font-bold mb-6 text-blue-500">Video Transcription</h1>
 
-      <form onSubmit={handleSubmit}>
-        <input type="file" accept="video/*" onChange={handleFileChange} />
-        <button type="submit" disabled={loading}>
-          {loading ? 'Transcribing...' : 'Upload and Transcribe'}
-        </button>
-      </form>
+        <form onSubmit={handleSubmit} className="space-y-6">
+          <input
+            type="file"
+            accept="video/*"
+            onChange={handleFileChange}
+            className="block w-full px-4 py-2 text-sm text-gray-300 bg-gray-700 border border-gray-600 rounded-lg cursor-pointer focus:outline-none"
+          />
+          <button
+            type="submit"
+            disabled={loading}
+            className={`w-full py-3 rounded-lg text-lg font-semibold 
+                        ${loading ? 'bg-gray-600 cursor-not-allowed' : 'bg-blue-500 hover:bg-blue-600'}`}
+          >
+            {loading ? 'Transcribing...' : 'Upload and Transcribe'}
+          </button>
+        </form>
 
-      {transcript && (
-        <div>
-          <h2>Transcription</h2>
-          <pre>{transcript}</pre>
-        </div>
-      )}
+        {transcript && (
+          <div className="mt-8 bg-gray-700 p-4 rounded-lg">
+            <h2 className="text-xl font-semibold mb-2 text-cyan-400">Transcription</h2>
+            <pre className="whitespace-pre-wrap text-gray-300">{transcript}</pre>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
