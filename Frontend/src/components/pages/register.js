@@ -82,28 +82,28 @@ const Register = () => {
             placeholder="Username"
             name="username"
             onChange={handlechange}
-            style={{ width: "100%", padding: "10px", marginBottom: "1rem", borderRadius: "4px", border: "1px solid #ced4da" }}
+            style={{ width: "100%", padding: "10px", marginBottom: "1rem", borderRadius: "4px", border: "1px solid #ced4da",color:"white" }}
           />
           <input
             type="email"
             placeholder="Email"
             name="email"
             onChange={handlechange}
-            style={{ width: "100%", padding: "10px", marginBottom: "1rem", borderRadius: "4px", border: "1px solid #ced4da" }}
+            style={{ width: "100%", padding: "10px", marginBottom: "1rem", borderRadius: "4px", border: "1px solid #ced4da",color:"white" }}
           />
           <input
             type="password"
             placeholder="Password"
             name="password"
             onChange={handlechange}
-            style={{ width: "100%", padding: "10px", marginBottom: "1rem", borderRadius: "4px", border: "1px solid #ced4da" }}
+            style={{ width: "100%", padding: "10px", marginBottom: "1rem", borderRadius: "4px", border: "1px solid #ced4da",color:"white" }}
           />
           <input
             type="password"
             placeholder="Confirm Password"
             name="confirmPassword"
             onChange={handlechange}
-            style={{ width: "100%", padding: "10px", marginBottom: "1rem", borderRadius: "4px", border: "1px solid #ced4da" }}
+            style={{ width: "100%", padding: "10px", marginBottom: "1rem", borderRadius: "4px", border: "1px solid #ced4da",color:"white" }}
           />
           <button type="submit" style={{ width: "100%", padding: "10px", backgroundColor: "#007bff", color: "#fff", borderRadius: "4px", border: "none", cursor: "pointer" }}>
             CREATE NEW USER

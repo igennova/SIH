@@ -51,7 +51,7 @@ exports.transcribeVideo = async (req, res) => {
     );
 
     // Log the entire response for debugging
-    console.log('Deepgram response:', response);
+    // console.log('Deepgram response:', response);
 
     // Extract transcript from the response
     if (response.result && response.result.results && response.result.results.channels && response.result.results.channels.length > 0) {

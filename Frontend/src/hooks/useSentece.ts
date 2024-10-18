@@ -19,7 +19,6 @@ const useSentence = () => {
       }
     }, threshold);
 
-    // if they dont hold the sign for long enough, reset timer
     return () => {
       clearTimeout(timerId);
     };
