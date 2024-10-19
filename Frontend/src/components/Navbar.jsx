@@ -2,7 +2,7 @@ import React from "react";
 import { LuMenu } from "react-icons/lu";
 import { Link } from "react-router-dom";
 
-function Navbar() {
+const Navbar = () => {
   const navLinks = ["Features", "Learning" , "Our Mission", "About Us", "Contact"];
   return (
     <div className="sticky bg-zinc-900/40 backdrop-blur-md top-0 z-[999] py-4 sm:py-5">

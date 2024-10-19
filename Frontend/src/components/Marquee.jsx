@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 
-function Marquee() {
+const Marquee = () => {
   return (
     <div
       data-scroll
