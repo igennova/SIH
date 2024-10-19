@@ -1,7 +1,7 @@
 import React from "react";
 import { FaArrowUpLong } from "react-icons/fa6";
 
-function Footer() {
+const Footer = () => {
   return (
     <div className="w-full h-fit bg-[#1d1f1e]">
       <div className="container md:flex-row flex flex-col py-10">

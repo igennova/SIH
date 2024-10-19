@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import React from "react";
 import { FaArrowUpLong } from "react-icons/fa6";
 
-function HeroSection() {
+const HeroSection = () => {
   return (
     <div
       data-scroll

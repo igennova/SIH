@@ -11,6 +11,7 @@ import Event from "./components/data/Event";
 import VideotoText from "./components/videototext/video1";
 import SetAvatar from "./components/pages/setavatar/setavatar";
 import TeacherPage from "./components/teacher/teacher";
+import Library from "./components/data/data";
 // import MathGame from "./components/game";
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
         <Route path="/login" element={<Login/>}></Route>
         <Route path="/model" element={<Translator />}></Route>
         <Route path="/register" element={<Register />} />
-        <Route path="/data" element={<Video/>}></Route>
+        <Route path="/data" element={<Library/>}></Route>
         <Route path="/folder/:folderId" element={<Video/>}></Route>
         <Route path="/events" element={<Event/>}></Route>
         <Route path="/video" element={<VideotoText/>}></Route>

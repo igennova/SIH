@@ -194,7 +194,7 @@ function Convert() {
           </label>
           <textarea rows={3} value={text} className='w-100 input-style' readOnly style={{ color: 'white' }} />
           <label className='label-style'>
-            Gujarati Translation
+            ISL Translation
           </label>
           {/* <textarea rows={3} value={gujaratiText} className='w-100 input-style' readOnly style={{ color: 'white' }} /> */}
           <label className='label-style'>

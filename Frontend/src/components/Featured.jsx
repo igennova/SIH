@@ -3,7 +3,7 @@ import React from "react";
 import { FaArrowUpLong } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
-function Featured() {
+const Featured = () => {
   const cards = [useAnimation(), useAnimation()];
   const handleHoverStart = (index) => {
     cards[index].start({
